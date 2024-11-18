@@ -26,16 +26,17 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install django
+          pip install django django-distill whitenoise
           npm install -g gh-pages
 
       - name: Build project
         run: |
-          cd fsdocumentation  # Change to the directory where manage.py is located
+          cd fsdocumentation
           python manage.py collectstatic --noinput
+          python manage.py distill-local /tmp/static_output
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./fsdocumentation/staticfiles
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /tmp/static_output

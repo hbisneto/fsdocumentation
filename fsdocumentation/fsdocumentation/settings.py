@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'documentation',
+    'django_distill',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'fsdocumentation.urls'
@@ -123,5 +126,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+# Define STATIC_ROOT
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Additional configurations
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
