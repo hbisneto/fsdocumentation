@@ -34,7 +34,7 @@ jobs:
           cd fsdocumentation  # Change to the directory where manage.py is located
           python manage.py collectstatic --noinput
           mkdir -p /tmp/static_output  # Create the output directory
-          python manage.py distill-local /tmp/static_output
+          python manage.py distill-local /tmp/static_output --force  # Force overwrite without prompt
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
