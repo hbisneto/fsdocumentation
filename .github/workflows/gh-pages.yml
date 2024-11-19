@@ -1,4 +1,4 @@
-name: Deploy Django to GitHub Pages
+name: Deploy Django to GitHub Pages (1911)
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Specify Node 20 here
+          node-version: '20'
 
       - name: Set up Python
         uses: actions/setup-python@v2
