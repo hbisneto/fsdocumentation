@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Specify Node 20 here
+          node-version: '20'
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -31,13 +31,13 @@ jobs:
 
       - name: Build project
         run: |
-          cd fsdocumentation  # Change to the directory where manage.py is located
+          cd fsdocumentation
           python manage.py collectstatic --noinput
-          mkdir -p /tmp/static_output  # Create the output directory
-          python manage.py distill-local /tmp/static_output --force  # Force overwrite without prompt
+          mkdir -p /tmp/static_output
+          python manage.py distill-local /tmp/static_output --force
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.DOC_TOKEN }}
           publish_dir: /tmp/static_output
