@@ -1,9 +1,9 @@
-name: Deploy Django to GitHub Pages (1911)
+name: Deploy Django to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - main  # Certifique-se de que a branch principal está sendo monitorada
 
 jobs:
   deploy:
